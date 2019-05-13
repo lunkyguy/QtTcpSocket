@@ -8,9 +8,9 @@ QtTcpClient::QtTcpClient()
 	tcpClient->abort();
 	tcpClient->connectToHost("127.0.0.1", 8810);
 	connect(tcpClient, SIGNAL(readyRead()), this, SLOT(readMessage()));
-	QString msgS = QStringLiteral("·¢ËÍÏûÏ¢");
+	QString msgS = QStringLiteral("å‘é€æ¶ˆæ¯");
 	tcpClient->write(msgS.toUtf8(), msgS.toUtf8().length());
-	//QString msgS = QString::fromLocal8Bit("·¢ËÍÏûÏ¢");
+	//QString msgS = QString::fromLocal8Bit("å‘é€æ¶ˆæ¯");
 	//tcpClient->write(msgS.toLocal8Bit(), msgS.toLocal8Bit().length());
 }
 
@@ -51,14 +51,14 @@ void QtTcpServer::newConnect()
 
 void QtTcpServer::readMessage()
 {
-	QByteArray datagram = tcpSocket->readAll(); //¶ÁÈ¡   
+	QByteArray datagram = tcpSocket->readAll(); //è¯»å–   
 	QString msg = QString::fromUtf8(datagram);
-	QString msgS = QStringLiteral("ÊÕµ½ÏûÏ¢");
+	QString msgS = QStringLiteral("æ”¶åˆ°æ¶ˆæ¯");
 	qDebug() << msg;
 	tcpSocket->write(msgS.toUtf8(), msgS.toUtf8().length());
 
 	//QString msg = QString::fromLocal8Bit(datagram);
-	//QString msgS = QString::fromLocal8Bit("ÊÕµ½ÏûÏ¢");
+	//QString msgS = QString::fromLocal8Bit("æ”¶åˆ°æ¶ˆæ¯");
 	//qDebug() << msg;
 	//tcpSocket->write(msgS.toLocal8Bit(), msgS.toLocal8Bit().length());
 }
